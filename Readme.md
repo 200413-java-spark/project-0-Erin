@@ -1,13 +1,16 @@
-Determine true cost of home mortgage for better budgeting/purchasing decision
 
-input 
-1. (interest percentage)
-3%
+# Determine average cost of monthly mortgage by zipcode for better budgeting/purchasing decision
 
-2. read in average cost of home via csv data(?) for comparison of costs
+// Input
+java Mort [downPay] [interest] [years] [zip]
+java Mort 20000.00 4.32 15 98109
 
-output
-total cost of payments over full mortgage term
+// Output
+1851.77
 
+# Build
+./build.sh
 
+# Usage
+java Mort [downPay] [interest] [years] [zip]
 
