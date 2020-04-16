@@ -1,1 +1,2 @@
-javac Mort.java
+#javac Mort.java
+mvn compile
