@@ -1,10 +1,13 @@
+package com.github.ettynan.mort;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 
-class Mort {
+public class Mort {
 
     public static void main(String []args) {
         // declare variables
@@ -17,7 +20,7 @@ class Mort {
 
         // read in file
         BufferedReader file = null;
-        String pathToCsv = "/Users/user/Desktop/Revature/project-0/data.csv";
+        String pathToCsv = "/Users/user/Desktop/Revature/project-0/src/main/java/com/github/ettynan/mort/data.csv";
         String line = "";
         try {
             file = new BufferedReader(new FileReader(pathToCsv));
@@ -43,21 +46,32 @@ class Mort {
             }
         }
         // parse input; parse interest rate, parse zipcode, down payment
-        if (args.length > 0) {
-            try{
-                downPay = Double.parseDouble(args[0]);
-                interest = Double.parseDouble(args[1]);
-                years = Integer.parseInt(args[2]);
-                zip = Integer.parseInt(args[3]);
-            } // catch if non number entered 
-            catch (NumberFormatException e) {
-                System.out.print("Numbers only please");
-                System.exit(1);
-            } // catch if one piece of input missing
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.print("Input all needed information please. \n");
-                System.exit(1);
-            }
+        Scanner scanner = new Scanner(System.in);
+        try{
+            System.out.println("Enter the down payment amount including cents: ");
+            downPay = Double.parseDouble(scanner.nextLine());
+            System.out.println("\nEnter the interest rate: ");
+            interest = Double.parseDouble(scanner.nextLine());
+            System.out.println("\nEnter the term length in years: ");
+            years = Integer.parseInt(scanner.nextLine());
+            System.out.println("\nEnter the house zipcode: ");
+            zip = Integer.parseInt(scanner.nextLine());
+        } 
+        // if (args.length > 0) {
+        //     try{
+        //         downPay = Double.parseDouble(args[0]);
+        //         interest = Double.parseDouble(args[1]);
+        //         years = Integer.parseInt(args[2]);
+        //         zip = Integer.parseInt(args[3]);
+        //} // catch if non number entered 
+        catch (NumberFormatException e) {
+            System.out.print("Numbers only please");
+            System.exit(1);
+        } // catch if one piece of input missing
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.print("Input all needed information please. \n");
+            System.exit(1);
+        }
 
             // calculate monthly payment
             float monthlyInterest = (float) ((interest / 100) / monthsPerYear);
@@ -73,4 +87,4 @@ class Mort {
         }
 
     }
-}
+//}
